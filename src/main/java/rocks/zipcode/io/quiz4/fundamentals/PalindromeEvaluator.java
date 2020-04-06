@@ -1,18 +1,57 @@
 package rocks.zipcode.io.quiz4.fundamentals;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author leon on 18/12/2018.
  */
 public class PalindromeEvaluator {
     public static String[] getAllPalindromes(String string) {
-        return null;
+//        public static Set<CharSequence> printAllPalindromes(String string) {
+            if (string.length() <= 2) {
+                return Collections.emptySet();
+            }
+            Set<CharSequence> out = new HashSet<CharSequence>();
+            int length = string.length();
+            for (int i = 1; i <= length; i++) {
+                for (int j = i - 1, k = i; j >= 0 && k < length; j--, k++) {
+                    if (string.charAt(j) == string.charAt(k)) {
+                        out.add(string.subSequence(j, k + 1));
+                    } else {
+                        break;
+                    }
+                }
+            }
+            return out;
+        }
+
     }
 
     public static Boolean isPalindrome(String string) {
-        return null;
+//        char[] word = new char [string.length()];
+//    string.toCharArray();
+//
+//        public static boolean istPalindrom(char[] word){
+//            int i1 = 0;
+//            int i2 = word.length - 1;
+//            while (i2 > i1) {
+//                if (word[i1] != word[i2]) {
+//                    return false;
+//                }
+//                ++i1;
+//                --i2;
+//            }
+//            return true;
+//        }
+//    }
+//        public static boolean isPalindrome (String string){
+        return string.equals(new StringBuilder(string).reverse().toString());
     }
 
     public static String reverseString(String string) {
-        return null;
+        return new StringBuilder(string).reverse().toString();
+
     }
 }
